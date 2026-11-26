@@ -1,11 +1,10 @@
-# Headless Chrome (Browserless) tuned for Render's free tier (512 MB RAM).
-FROM ghcr.io/browserless/chromium:latest
+# Full Chrome (Chromium) desktop in the browser via KasmVNC.
+# Open the service URL, sign in with CUSTOM_USER / PASSWORD (set in Render).
+FROM lscr.io/linuxserver/chromium:latest
 
-# One browser at a time keeps memory under 512 MB.
-ENV CONCURRENT=1 \
-    QUEUED=5 \
-    TIMEOUT=60000 \
-    HEALTH=true
+# Keep memory low for Render's free tier (512 MB).
+ENV CHROME_CLI="--disable-dev-shm-usage --renderer-process-limit=1 --disable-extensions --disable-background-networking" \
+    TITLE="Radiant Chrome" \
+    TZ=Africa/Accra
 
-# Render injects PORT; Browserless listens on it.
 EXPOSE 3000

@@ -1,9 +1,7 @@
 # chrome-host
 
-Headless Chrome (Browserless) on Render, free tier.
+Full Chrome in the browser (linuxserver/chromium + KasmVNC) on Render.
 
-- Set `TOKEN` in Render's environment variables (never commit it).
-- Connect (Puppeteer): `wss://<service>.onrender.com?token=TOKEN`
-- Screenshot API: `POST https://<service>.onrender.com/screenshot?token=TOKEN` with `{"url":"https://example.com"}`
-
-Free tier: 512 MB RAM, one tab at a time, sleeps after ~15 min idle.
+- Open https://radiant-chrome-host.onrender.com and sign in.
+- Credentials: `CUSTOM_USER` / `PASSWORD` env vars in Render (never commit them).
+- Free tier: 512 MB RAM — heavy sites may crash; sleeps after ~15 min idle; nothing is saved between restarts.
